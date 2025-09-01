@@ -8,7 +8,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     defaults:
       run:
-        shell: bash -el {0}
+        shell: pwsh
     strategy:
       fail-fast: false
       matrix:
@@ -30,7 +30,7 @@ jobs:
     - name: Install dependencies
       run: |
         conda info
-        conda install -c conda-forge numpy pytest
+        conda install -c conda-forge numpy "llvm-openmp<21" pytest
         conda list
 
     - name: Run unit tests
